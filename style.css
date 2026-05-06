@@ -1,0 +1,275 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    background: #faf9f7;
+    color: #1a1a1a;
+    line-height: 1.5;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px 16px 40px;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+h1 {
+    color: #2c3e2f;
+    border-bottom: none;
+    padding-bottom: 8px;
+    font-size: 1.8rem;
+}
+
+.subtitle {
+    color: #5e6b55;
+    font-size: 1rem;
+}
+
+h2 {
+    color: #2c3e2f;
+    border-bottom: 2px solid #d4e0d0;
+    padding-bottom: 8px;
+    margin: 28px 0 16px;
+}
+
+h3 {
+    margin: 24px 0 12px;
+    color: #4a6b3f;
+}
+
+/* Навигация */
+.nav-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    border-bottom: 1px solid #e2e0db;
+    padding-bottom: 12px;
+}
+
+.back-button {
+    background: #edebe7;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #4a6b3f;
+    transition: all 0.2s ease;
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.back-button:hover {
+    background: #e0dbd3;
+    transform: translateX(-3px);
+}
+
+.page-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #2c3e2f;
+}
+
+.page-description {
+    color: #5b6e51;
+    margin-bottom: 20px;
+}
+
+/* Сетка карточек (главная) */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    margin: 32px 0 20px;
+}
+
+.menu-card {
+    background: white;
+    border-radius: 28px;
+    padding: 32px 16px 28px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+    border: 1px solid #edeae4;
+    display: block;
+}
+
+.menu-card:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 20px 30px -12px rgba(60, 45, 30, 0.15);
+    background: #ffffff;
+    border-color: #cbdcc5;
+}
+
+.menu-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+    transition: transform 0.2s ease;
+}
+
+.menu-card:hover .menu-icon {
+    transform: scale(1.08);
+}
+
+.menu-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2c3e2f;
+    margin-bottom: 8px;
+}
+
+.menu-card p {
+    font-size: 0.85rem;
+    color: #6c6a64;
+}
+
+/* Таблицы */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    margin: 16px 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+th, td {
+    border: 1px solid #e9e6e0;
+    padding: 10px 12px;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background-color: #eef4ea;
+    font-weight: 600;
+}
+
+.day-table th, .day-table td {
+    text-align: center;
+}
+
+/* Блоки */
+.highlight {
+    background: #fef5e7;
+    border-left: 4px solid #e6b800;
+    padding: 10px 15px;
+    margin: 20px 0;
+    border-radius: 12px;
+}
+
+.warning {
+    background: #ffefef;
+    border-left: 4px solid #c0392b;
+    padding: 10px 15px;
+    margin: 20px 0;
+    border-radius: 12px;
+}
+
+/* Empty state для пустых страниц */
+.empty-state {
+    background: #f8f6f2;
+    border-radius: 32px;
+    padding: 48px 24px;
+    text-align: center;
+    margin: 32px 0;
+    border: 1px dashed #cbc6bc;
+}
+
+.empty-icon {
+    font-size: 64px;
+    margin-bottom: 16px;
+}
+
+.empty-state h3 {
+    color: #4f6b42;
+    margin-bottom: 12px;
+}
+
+.coming-soon-badge {
+    margin-top: 28px;
+    font-size: 14px;
+    background: #eae6df;
+    display: inline-block;
+    padding: 6px 18px;
+    border-radius: 60px;
+}
+
+.preview-block {
+    margin: 20px auto 10px;
+    background: #fff6e8;
+    border-radius: 24px;
+    padding: 18px;
+    text-align: left;
+    max-width: 500px;
+}
+
+.italic-note {
+    margin-top: 12px;
+    font-style: italic;
+    color: #8a857a;
+}
+
+/* Footer */
+footer {
+    margin-top: 48px;
+    text-align: center;
+    font-size: 13px;
+    color: #aaa49b;
+    border-top: 1px solid #ece7e0;
+    padding-top: 20px;
+}
+
+footer a {
+    color: #4a6b3f;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Адаптив */
+@media (max-width: 600px) {
+    .container {
+        padding: 16px 12px 32px;
+    }
+    
+    th, td {
+        padding: 6px 8px;
+        font-size: 12px;
+    }
+    
+    .dashboard-grid {
+        gap: 16px;
+    }
+    
+    .menu-card {
+        padding: 24px 12px 20px;
+    }
+    
+    .menu-icon {
+        font-size: 40px;
+    }
+    
+    .menu-card h3 {
+        font-size: 1.3rem;
+    }
+}
