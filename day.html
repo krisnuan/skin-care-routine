@@ -51,297 +51,6 @@
         }
 
         .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .page-header {
-            text-align: center;
-            margin-bottom: 32px;
-            padding-bottom: 16px;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .page-title {
-            font-size: clamp(1.8rem, 5vw, 2.2rem);
-            font-weight: 700;
-            color: white;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .animated-icon {
-            display: inline-block;
-            animation: gentleWobble 3s ease-in-out infinite;
-            filter: drop-shadow(0 0 5px rgba(255, 200, 80, 0.5));
-        }
-
-        @keyframes gentleWobble {
-            0%, 100% {
-                transform: rotate(0deg) scale(1);
-                filter: drop-shadow(0 0 5px rgba(255, 200, 80, 0.4));
-            }
-            50% {
-                transform: rotate(8deg) scale(1.1);
-                filter: drop-shadow(0 0 15px rgba(255, 200, 80, 0.8));
-            }
-        }
-
-        .table-wrapper {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 24px;
-            margin: 20px 0;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            overflow: hidden;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: transparent;
-        }
-
-        th, td {
-            padding: 14px 16px;
-            text-align: left;
-            vertical-align: middle;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        th:not(:last-child),
-        td:not(:last-child) {
-            border-right: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        th {
-            background: rgba(255, 255, 255, 0.2);
-            font-weight: 700;
-            color: white;
-        }
-
-        td {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-        }
-
-        tr:hover td {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .product-link {
-            color: #FFE8B6;
-            text-decoration: none;
-            font-weight: 600;
-            border-bottom: 1px dashed rgba(255, 232, 182, 0.5);
-            transition: all 0.2s ease;
-            cursor: pointer;
-        }
-
-        .product-link:hover {
-            color: #FFD966;
-            border-bottom: 1px solid #FFD966;
-        }
-
-        .info-block {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(12px);
-            border-radius: 20px;
-            padding: 18px 22px;
-            margin: 28px 0;
-            color: white;
-            transition: transform 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .info-block:hover {
-            transform: translateX(5px);
-            background: rgba(255, 255, 255, 0.25);
-        }
-
-        .info-icon {
-            font-size: 32px;
-            flex-shrink: 0;
-        }
-
-        .info-content {
-            flex: 1;
-        }
-
-        .info-content strong {
-            color: #FFE8B6;
-            font-size: 1rem;
-        }
-
-        .info-block.tip {
-            border-left: 4px solid #ffd966;
-        }
-
-        .info-block.warning {
-            border-left: 4px solid #ff8a7a;
-        }
-
-        .info-block.tip .info-icon {
-            animation: gentleTipGlow 3s ease-in-out infinite;
-        }
-
-        .info-block.warning .info-icon {
-            animation: gentleWarningGlow 3s ease-in-out infinite;
-        }
-
-        @keyframes gentleTipGlow {
-            0%, 100% { filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2)); }
-            50% { filter: drop-shadow(0 0 8px rgba(255, 200, 80, 0.5)); }
-        }
-
-        @keyframes gentleWarningGlow {
-            0%, 100% { filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2)); }
-            50% { filter: drop-shadow(0 0 8px rgba(255, 100, 80, 0.5)); }
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 56px;
-            padding-top: 24px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        footer a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: opacity 0.2s;
-        }
-
-        footer a:hover {
-            opacity: 0.8;
-            text-decoration: underline;
-        }
-
-        @media (max-width: 600px) {
-            body { padding: 16px 14px; }
-            th, td { padding: 10px 10px; font-size: 13px; }
-            .info-block { flex-direction: column; text-align: center; }
-            .info-icon { margin-bottom: 8px; }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .container { animation: fadeIn 0.5s ease; }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="page-header">
-            <span class="page-title">
-                <span class="animated-icon">☀️</span> Дневной уход
-            </span>
-        </div>
-
-        <div class="table-wrapper">
-            <table>
-                <thead>
-                    <tr><th>Шаг</th><th>Средство</th><th>Зачем</th></tr>
-                </thead>
-                <tbody>
-                    <!-- ===== ЗАМЕНИТЕ href="#" НА РЕАЛЬНЫЕ ССЫЛКИ ===== -->
-                    <tr>
-                        <td>1</td>
-                        <td><a href="https://goldapple.ru/89270300016-sensibio-mild-cleansing-foaming-gel?srsltid=AfmBOoow5wewL-On7IyyXAWPBhe6fgGa5hjlDp-Y_EkkbrISqsqQbJu-" class="product-link" target="_blank">Гель Bioderma</a></td>
-                        <td>Очистить кожу после сна</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td><a href="https://hollyshop.ru/catalog/product/barernyy_kremovyy_toner_celimax_dual_barrier_creamy_toner_/" class="product-link" target="_blank">Тонер Celimax с керамидами</a></td>
-                        <td>Увлажнить и подготовить кожу</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td><a href="https://hollyshop.ru/catalog/product/ampula_buster_s_matriksilom_skin1004_madagascar_centella_matrixyl_10_boosting_shot_ampoule/" class="product-link" target="_blank">Ниацинамид 10% (Skin1004)</a></td>
-                        <td>Сужение пор, контроль жирности, тон</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td><a href="https://hollyshop.ru/catalog/product/seboreguliruyushchaya_ampula_dlya_suzheniya_por_skin1004_madagascar_centella_poremizing_fresh_ampoule_100ml/" class="product-link" target="_blank">Poremizing Fresh (Skin1004)</a></td>
-                        <td>Пептиды + центелла — укрепление стенок пор</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td><a href="https://hollyshop.ru/catalog/product/vosstanavlivayushchiy_krem_s_resveratrolom_dr_althea_resveratrol_345_na_intensive_repair_cream/" class="product-link" target="_blank">Dr. Althea 345 Relief Cream</a></td>
-                        <td>Лёгкое увлажнение, не забивает поры</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td><a href="https://hollyshop.ru/catalog/product/legkiy_mineralnyy_solntsezashchitnyy_krem_airy_sun_cream_spf50_pa_/" class="product-link" target="_blank">Anua Airy Sun Cream SPF50+ PA++++</a></td>
-                        <td>Физическая защита от солнца (обязательно!)</td>
-                    </tr>
-                    <!-- ===== КОНЕЦ БЛОКА ДЛЯ ЗАМЕНЫ ===== -->
-                </tbody>
-            </table>
-        </div>
-
-        <div class="info-block tip"><!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Дневной уход | Твой уход за кожей</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-            min-height: 100vh;
-            padding: 24px 20px;
-            
-            background-image: url('https://images.unsplash.com/photo-1670201202802-5ec2423282ff?q=80&w=1823&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-            background-color: rgba(0, 0, 0, 0.3);
-            background-blend-mode: overlay;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: inherit;
-            background-size: cover;
-            background-position: center;
-            filter: blur(8px);
-            z-index: -2;
-        }
-
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.4);
-            z-index: -1;
-        }
-
-        .container {
             max-width: 1200px;
             margin: 0 auto;
             position: relative;
@@ -379,7 +88,6 @@
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
-        /* ИСПРАВЛЕННАЯ АНИМАЦИЯ — БЕЗ ПОВОРОТОВ */
         .animated-icon {
             display: inline-block;
             animation: gentleSunGlow 3s ease-in-out infinite;
@@ -396,7 +104,6 @@
             }
         }
 
-        /* ТАБЛИЦА */
         .table-wrapper {
             background: rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(12px);
@@ -453,7 +160,6 @@
             border-bottom: 1px solid #FFD966;
         }
 
-        /* БЕЙДЖ-ЗАМЕТКА */
         .notice-badge {
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(12px);
@@ -541,7 +247,6 @@
             color: #FFD966;
         }
 
-        /* МОДАЛЬНОЕ ОКНО */
         .modal {
             display: none;
             position: fixed;
@@ -655,14 +360,14 @@
 
         .mist-name {
             color: #FFE8B6;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             margin-bottom: 8px;
         }
 
         .mist-desc {
             color: rgba(255, 255, 255, 0.8);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             margin-bottom: 16px;
             line-height: 1.4;
         }
@@ -892,67 +597,59 @@
                 <button class="close-modal" id="closeModalBtn">✕</button>
             </div>
             <div class="mist-grid">
-                <!-- ===== КАРТОЧКА 1 ===== -->
                 <div class="mist-card">
                     <div class="mist-image">
                         <img src="https://hollyshop.ru/upload/iblock/ebb/dde8ah6xh8cq2ty3nfkjo18lhrif59c8/Dr.-Althea-Aqua-Marine-Jelly-Mist.jpg" alt="Увлажняющий мист">
                     </div>
-                    <div class="mist-name">Увлажняющий мист с морской водой и ПДРН</div>
-                    <div class="mist-desc">Увлажняющий мист с морской водой и ПДРН Dr. Althea Aqua Marine Jelly Mist приятно охлаждает, смягчает и питает кожу, придаёт здоровое сияние. </div>
+                    <div class="mist-name">Dr. Althea Aqua Marine Jelly Mist</div>
+                    <div class="mist-desc">Увлажняющий мист с морской водой и ПДРН. Приятно охлаждает, смягчает и питает кожу.</div>
                     <a href="https://hollyshop.ru/catalog/product/uvlazhnyayushchiy_mist_s_morskoy_vodoy_i_pdrn_dr_althea_aqua_marine_jelly_mist/" class="mist-buy-link" target="_blank">Купить →</a>
                 </div>
-                <!-- ===== КАРТОЧКА 2 ===== -->
                 <div class="mist-card">
                     <div class="mist-image">
-                        <img src="https://hollyshop.ru/upload/iblock/a3a/yn74e71ugkyoypn2r6nrjs70b1i8vsh0/hollyshop-_82_-_1_.jpg" alt="Термальная вода">
+                        <img src="https://hollyshop.ru/upload/iblock/a3a/yn74e71ugkyoypn2r6nrjs70b1i8vsh0/hollyshop-_82_-_1_.jpg" alt="Осветляющий мист">
                     </div>
-                    <div class="mist-name">Осветляющий тонер-мист от постакне</div>
-                    <div class="mist-desc">Осветляющий тонер-мист AXIS-Y Dark Spot Correcting Glow Toner корректирует несовершенства кожи: убирает постакне и заживляет воспаление, выравнивает тон и устраняет красноту</div>
+                    <div class="mist-name">AXIS-Y Dark Spot Correcting Glow Toner</div>
+                    <div class="mist-desc">Осветляющий тонер-мист от постакне. Выравнивает тон и устраняет красноту.</div>
                     <a href="https://hollyshop.ru/catalog/product/osvetlyayushchiy_toner_mist_ot_postakne_axis_y_dark_spot_correcting_glow_toner/" class="mist-buy-link" target="_blank">Купить →</a>
                 </div>
-                <!-- ===== КАРТОЧКА 3 ===== -->
                 <div class="mist-card">
                     <div class="mist-image">
-                        <img src="https://hollyshop.ru/upload/iblock/9f9/pl1cfm02jmxneum90qbty0m3mf2p8oks/1_100ml.jpg" alt="Цветочный мист">
+                        <img src="https://hollyshop.ru/upload/iblock/9f9/pl1cfm02jmxneum90qbty0m3mf2p8oks/1_100ml.jpg" alt="Успокаивающий мист">
                     </div>
-                    <div class="mist-name">Успокаивающий мист с гидролатом</div>
-                    <div class="mist-desc">Успокаивающий мист с гидролатом риса и пантенолом Dr. Althea 345 Relief Cream Mist увлажняет, смягчает, восстанавливает гидролипидную мантию, уменьшает раздражение и реактивность</div>
+                    <div class="mist-name">Dr. Althea 345 Relief Cream Mist</div>
+                    <div class="mist-desc">Успокаивающий мист с гидролатом риса и пантенолом. Уменьшает раздражение.</div>
                     <a href="https://hollyshop.ru/catalog/product/uspokaivayushchiy_mist_s_gidrolatom_risa_i_pantenolom_dr_althea_345_relief_cream_mist_100_ml/" class="mist-buy-link" target="_blank">Купить →</a>
                 </div>
-                <!-- ===== КАРТОЧКА 4 ===== -->
                 <div class="mist-card">
                     <div class="mist-image">
                         <img src="https://hollyshop.ru/upload/iblock/a78/l8hw6b0zvd3pm3082zmmkl8svvff8o4l/1.jpg" alt="Гиалуроновый мист">
                     </div>
-                    <div class="mist-name">Увлажняющий капсульный мист </div>
-                    <div class="mist-desc">Обеспечивает глубокое увлажнение кожи, устраняет сухость и ощущение стянутости</div>
+                    <div class="mist-name">ANUA PDRN Hyaluronic Acid Hydrating Mist</div>
+                    <div class="mist-desc">Увлажняющий капсульный мист. Устраняет сухость и стянутость.</div>
                     <a href="https://hollyshop.ru/catalog/product/uvlazhnyayushchiy_kapsulnyy_mist_s_pdrn_i_gialuronovoy_kislotoy_anua_pdrn_hyaluronic_acid_hydrating_/" class="mist-buy-link" target="_blank">Купить →</a>
                 </div>
-                <!-- ===== КАРТОЧКА 5 ===== -->
                 <div class="mist-card">
                     <div class="mist-image">
-                        <img src="https://hollyshop.ru/upload/iblock/838/o47q4kyfrobt5v6h30ov9e45eiyp5t1a/hollyshop-_-2025_12_18T150742.068-_1_.jpg" alt="Гиалуроновый мист">
+                        <img src="https://hollyshop.ru/upload/iblock/838/o47q4kyfrobt5v6h30ov9e45eiyp5t1a/hollyshop-_-2025_12_18T150742.068-_1_.jpg" alt="Мист с коллагеном">
                     </div>
-                    <div class="mist-name">Мист с ПДРН и коллагеном</div>
-                    <div class="mist-desc">Мист с ПДРН и коллагеном medicube PDRN Pink Collagen Glow Jelly Mist Serum интенсивно увлажняет, повышает упругость и эластичность</div>
+                    <div class="mist-name">Medicube PDRN Pink Collagen Glow Jelly Mist</div>
+                    <div class="mist-desc">Мист с ПДРН и коллагеном. Повышает упругость и эластичность.</div>
                     <a href="https://hollyshop.ru/catalog/product/mist_s_pdrn_i_kollagenom_dlya_siyaniya_kozhi_medicube_pdrn_pink_collagen_glow_jelly_mist_serum/" class="mist-buy-link" target="_blank">Купить →</a>
                 </div>
-                <!-- ===== КАРТОЧКА 6 ===== -->
-                 <div class="mist-card">
+                <div class="mist-card">
                     <div class="mist-image">
-                        <img src="https://hollyshop.ru/upload/iblock/65f/muprujyrru9el806yxf0kznr3d0drghe/hollyshop-_-2026_04_02T110722.007-_1_.jpg" alt="Гиалуроновый мист">
+                        <img src="https://hollyshop.ru/upload/iblock/65f/muprujyrru9el806yxf0kznr3d0drghe/hollyshop-_-2026_04_02T110722.007-_1_.jpg" alt="Двухфазный мист">
                     </div>
-                    <div class="mist-name">Двухфазный мист с коллагеном</div>
-                    <div class="mist-desc">Замедляет появление возрастных изменений, сокращает видимость морщин, вызванных сухостью и недостатком питания</div>
+                    <div class="mist-name">Sungboon Editor Deep Collagen Barrier Serum Mist</div>
+                    <div class="mist-desc">Двухфазный мист с коллагеном. Замедляет возрастные изменения.</div>
                     <a href="https://hollyshop.ru/catalog/product/dvukhfaznyy_mist_s_kollagenom_sungboon_editor_deep_collagen_barrier_serum_mist/" class="mist-buy-link" target="_blank">Купить →</a>
-                </div>        
+                </div>
             </div>
-            <!-- 🔽 ЗДЕСЬ ЗАМЕНИТЕ КАРТИНКИ И ССЫЛКИ НА ВАШИ -->
         </div>
     </div>
 
     <script>
-        // Открытие и закрытие модального окна
         const modal = document.getElementById('mistModal');
         const openBtn = document.getElementById('openModalBtn');
         const closeBtn = document.getElementById('closeModalBtn');
@@ -981,24 +678,5 @@
             }
         });
     </script>
-</body>
-</html>
-            <div class="info-icon">💡</div>
-            <div class="info-content">
-                <strong>Совет:</strong><br>
-                Наноси ниацинамид до увлажняющего крема, дай впитаться минуту — так поры работают лучше.
-            </div>
-        </div>
-
-        <div class="info-block warning">
-            <div class="info-icon">⚠️</div>
-            <div class="info-content">
-                <strong>Не пропускай SPF!</strong><br>
-                Даже в пасмурную погоду ультрафиолет ускоряет старение и пигментацию.
-            </div>
-        </div>
-
-        <footer><a href="index.html">← Вернуться на главную</a></footer>
-    </div>
 </body>
 </html>

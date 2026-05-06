@@ -73,73 +73,95 @@
 
         .animated-icon {
             display: inline-block;
-            animation: gentleWobble 3s ease-in-out infinite;
-            filter: drop-shadow(0 0 5px rgba(255, 200, 80, 0.5));
+            animation: gentleGlow 3s ease-in-out infinite;
         }
 
-        @keyframes gentleWobble {
-            0%, 100% { transform: rotate(0deg) scale(1); filter: drop-shadow(0 0 5px rgba(255, 200, 80, 0.4)); }
-            50% { transform: rotate(8deg) scale(1.1); filter: drop-shadow(0 0 15px rgba(255, 200, 80, 0.8)); }
+        @keyframes gentleGlow {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 3px rgba(255, 200, 80, 0.3)); }
+            50% { transform: scale(1.03); filter: drop-shadow(0 0 12px rgba(255, 200, 80, 0.6)); }
         }
 
-        .empty-state {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(12px);
-            border-radius: 32px;
-            padding: 60px 32px;
-            text-align: center;
-            margin: 40px 0;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+        /* СЕТКА МАСОК */
+        .masks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin: 30px 0;
         }
 
-        .empty-icon {
-            font-size: 80px;
-            margin-bottom: 24px;
-            display: inline-block;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .empty-state h2 {
-            color: #FFE8B6;
-            font-size: 1.8rem;
-            margin-bottom: 16px;
-        }
-
-        .empty-state p {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1rem;
-            line-height: 1.6;
-            max-width: 400px;
-            margin: 0 auto;
-        }
-
-        .divider {
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, #ffd966, rgba(255, 217, 102, 0.3));
-            margin: 24px auto;
-            border-radius: 3px;
-        }
-
-        .preview-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 16px;
-            margin: 32px 0 20px;
-        }
-
-        .preview-item {
+        /* КАРТОЧКА МАСКИ */
+        .mask-card {
             background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .mask-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 232, 182, 0.4);
+        }
+
+        .mask-image {
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 16px;
+            border-radius: 20px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .mask-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .mask-name {
+            color: #FFE8B6;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .mask-desc {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .mask-comment {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 8px 10px;
+            margin: 10px 0;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.85);
+            text-align: left;
+            font-style: italic;
+        }
+
+        .mask-buy-link {
+            display: inline-block;
+            background: rgba(255, 217, 102, 0.25);
+            color: #FFE8B6;
+            text-decoration: none;
             padding: 8px 20px;
             border-radius: 40px;
-            font-size: 0.9rem;
-            color: #FFE8B6;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            border: 1px solid rgba(255, 232, 182, 0.3);
+        }
+
+        .mask-buy-link:hover {
+            background: rgba(255, 217, 102, 0.45);
+            transform: scale(1.02);
         }
 
         footer {
@@ -162,9 +184,8 @@
         }
 
         @media (max-width: 600px) {
-            .empty-state { padding: 40px 24px; }
-            .empty-icon { font-size: 60px; }
-            .preview-item { padding: 6px 16px; font-size: 12px; }
+            body { padding: 16px 14px; }
+            .masks-grid { grid-template-columns: 1fr; }
         }
 
         @keyframes fadeIn {
@@ -183,18 +204,55 @@
             </span>
         </div>
 
-        <div class="empty-state">
-            <div class="empty-icon">🧴✨</div>
-            <h2>Скоро здесь появятся маски</h2>
-            <div class="divider"></div>
-            <p>Планируются: гидрогелевые, тканевые, ночные маски и детокс-маски для пор.</p>
-            <div class="preview-list">
-                <span class="preview-item">💧 Увлажняющие</span>
-                <span class="preview-item">🧹 Очищающие</span>
-                <span class="preview-item">✨ Сияющие</span>
-                <span class="preview-item">🛡️ Барьерные</span>
+        <!-- СЕТКА С МАСКАМИ — ДОБАВЛЯЙТЕ НОВЫЕ КАРТОЧКИ ЗДЕСЬ -->
+        <div class="masks-grid">
+            
+            <!-- ===== КАРТОЧКА МАСКИ 1 ===== -->
+            <div class="mask-card">
+                <div class="mask-image">
+                    <img src="https://hollyshop.ru/upload/iblock/294/1eu61qpae2enn2nabdsjvzto1ufy7v1f/Real-Barrier-Aqua-Soothing-Cream-Mask.jpg" alt="Гидрогелевая маска">
+                </div>
+                <div class="mask-name">Охлаждающая тканевая маска</div>
+                <div class="mask-desc">Охлаждающая тканевая маска с успокаивающим действием Real Barrier Aqua Soothing Cream Mask помогает снять зуд, красноту и воспаления</div>
+                <div class="mask-comment">✨ Мой комментарий: отлично снимает отеки утром, очень освежает</div>
+                <a href="https://hollyshop.ru/catalog/product/okhlazhdayushchaya_tkanevaya_maska_s_uspokaivayushchim_deystviem_real_barrier_aqua_soothing_gel_crea/" class="mask-buy-link" target="_blank">Купить →</a>
             </div>
-            <p style="margin-top: 20px; font-size: 0.9rem;">💤 ожидайте обновлений</p>
+
+            <!-- ===== КАРТОЧКА МАСКИ 2 ===== -->
+            <div class="mask-card">
+                <div class="mask-image">
+                    <img src="https://hollyshop.ru/upload/iblock/853/uwz8eqk602h9hc9zb461r5t9vhf0z099/Luvum-Phyto-Collagen-Gel-Mask.jpg" alt="Коллагеновая маска">
+                </div>
+                <div class="mask-name">Тающая гелевая маска с коллагеном</div>
+                <div class="mask-desc">Повышает упругость и эластичность, увлажняет и разглаживает кожу, устраняет тусклость и сокращает выраженность морщин</div>
+                <div class="mask-comment">💬 Классно питает и увлажняет, после нее кожа сияет</div>
+                <a href="https://hollyshop.ru/catalog/product/tayushchaya_gelevaya_maska_s_kollagenom_i_peptidami_luvum_phyto_collagen_gel_mask/" class="mask-buy-link" target="_blank">Купить →</a>
+            </div>
+
+            <!-- ===== КАРТОЧКА МАСКИ 3 ===== -->
+            <div class="mask-card">
+                <div class="mask-image">
+                    <img src="https://hollyshop.ru/upload/iblock/a68/nsd036269m1h07x1eyo1dw52otxzk7a1/07_08-_2_-_1_.png" alt="Ночная маска">
+                </div>
+                <div class="mask-name">Гелевая маска с коллагеном</div>
+                <div class="mask-desc">Оказывает выраженное успокаивающее и противовоспалительное действие, снимает зуд и покраснения, способствует заживлению воспалений</div>
+                <div class="mask-comment">🌙 Наношу когда коже нужно отдохнуть</div>
+                <a href="https://hollyshop.ru/catalog/product/gelevaya_maska_s_kollagenom_i_khauttyuyniey_abib_collagen_gel_mask_heartleaf_jelly/" class="mask-buy-link" target="_blank">Купить →</a>
+            </div>
+
+            <!-- ===== ДОБАВЛЯЙТЕ НОВЫЕ КАРТОЧКИ НИЖЕ ПО ЭТОМУ ШАБЛОНУ ===== -->
+            <!--
+            <div class="mask-card">
+                <div class="mask-image">
+                    <img src="URL_КАРТИНКИ" alt="Название маски">
+                </div>
+                <div class="mask-name">Название маски</div>
+                <div class="mask-desc">Короткое описание маски</div>
+                <div class="mask-comment">📝 Ваш личный комментарий</div>
+                <a href="ССЫЛКА_НА_ПОКУПКУ" class="mask-buy-link" target="_blank">Купить →</a>
+            </div>
+            -->
+
         </div>
 
         <footer><a href="index.html">← Вернуться на главную</a></footer>
