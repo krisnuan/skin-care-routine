@@ -16,12 +16,13 @@
             min-height: 100vh;
             padding: 24px 20px;
             
-            /* ===== ТОТ ЖЕ ФОН, НО С РАЗМЫТИЕМ ===== */
             background-image: url('https://images.unsplash.com/photo-1670201202802-5ec2423282ff?q=80&w=1823&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             background-repeat: no-repeat;
+            background-color: rgba(0, 0, 0, 0.3);
+            background-blend-mode: overlay;
         }
 
         body::before {
@@ -34,7 +35,7 @@
             background: inherit;
             background-size: cover;
             background-position: center;
-            filter: blur(12px);
+            filter: blur(8px);
             z-index: -2;
         }
 
@@ -56,121 +57,165 @@
             z-index: 1;
         }
 
-        .nav-header {
-            display: flex;
-            align-items: center;
-            gap: 20px;
+        .page-header {
+            text-align: center;
             margin-bottom: 32px;
             padding-bottom: 16px;
             border-bottom: 2px solid rgba(255, 255, 255, 0.3);
         }
 
-        .back-button {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(12px);
-            border: none;
-            font-size: 28px;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            color: white;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .back-button:hover {
-            background: rgba(255, 255, 255, 0.4);
-            transform: translateX(-5px);
-        }
-
         .page-title {
-            font-size: clamp(1.6rem, 5vw, 2rem);
+            font-size: clamp(1.8rem, 5vw, 2.2rem);
             font-weight: 700;
             color: white;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
-        .page-description {
-            background: rgba(255, 255, 255, 0.2);
+        .animated-icon {
+            display: inline-block;
+            animation: gentleWobble 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 5px rgba(255, 200, 80, 0.5));
+        }
+
+        @keyframes gentleWobble {
+            0%, 100% {
+                transform: rotate(0deg) scale(1);
+                filter: drop-shadow(0 0 5px rgba(255, 200, 80, 0.4));
+            }
+            50% {
+                transform: rotate(8deg) scale(1.1);
+                filter: drop-shadow(0 0 15px rgba(255, 200, 80, 0.8));
+            }
+        }
+
+        .table-wrapper {
+            background: rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(12px);
-            padding: 16px 24px;
-            border-radius: 20px;
-            color: white;
-            margin-bottom: 32px;
-            border-left: 4px solid rgba(255, 255, 255, 0.6);
-        }
-
-        h2 {
-            color: white;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-            padding-bottom: 10px;
-            margin: 32px 0 20px;
-            font-size: clamp(1.3rem, 4vw, 1.6rem);
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-        }
-
-        h3 {
-            margin: 24px 0 12px;
-            color: rgba(255, 255, 255, 0.95);
-            font-size: clamp(1.1rem, 3.5vw, 1.3rem);
-            padding-left: 12px;
-            border-left: 3px solid rgba(255, 255, 255, 0.5);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 24px;
+            margin: 20px 0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            overflow: hidden;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(12px);
-            margin: 20px 0;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: transparent;
         }
 
         th, td {
-            border: 1px solid rgba(255, 255, 255, 0.2);
             padding: 14px 16px;
             text-align: left;
-            vertical-align: top;
-            color: white;
+            vertical-align: middle;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        th:not(:last-child),
+        td:not(:last-child) {
+            border-right: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         th {
             background: rgba(255, 255, 255, 0.2);
             font-weight: 700;
+            color: white;
+        }
+
+        td {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .product-link {
+            color: #FFE8B6;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px dashed rgba(255, 232, 182, 0.5);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .product-link:hover {
+            color: #FFD966;
+            border-bottom: 1px solid #FFD966;
+        }
+
+        .section-title {
+            color: white;
+            font-size: 1.4rem;
+            margin: 28px 0 16px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            border-left: 3px solid #ffd966;
+            padding-left: 16px;
+        }
+
+        .info-block {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 18px 22px;
+            margin: 28px 0;
+            color: white;
+            transition: transform 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .info-block:hover {
+            transform: translateX(5px);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .info-icon {
+            font-size: 32px;
+            flex-shrink: 0;
+        }
+
+        .info-content {
+            flex: 1;
+        }
+
+        .info-content strong {
+            color: #FFE8B6;
+            font-size: 1rem;
+        }
+
+        .info-block.tip {
+            border-left: 4px solid #ffd966;
+        }
+
+        .info-block.warning {
+            border-left: 4px solid #ff8a7a;
+        }
+
+        .info-block.tip .info-icon {
+            animation: gentleTipGlow 3s ease-in-out infinite;
+        }
+
+        .info-block.warning .info-icon {
+            animation: gentleWarningGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes gentleTipGlow {
+            0%, 100% { filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2)); }
+            50% { filter: drop-shadow(0 0 8px rgba(255, 200, 80, 0.5)); }
+        }
+
+        @keyframes gentleWarningGlow {
+            0%, 100% { filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2)); }
+            50% { filter: drop-shadow(0 0 8px rgba(255, 100, 80, 0.5)); }
         }
 
         .day-table th, .day-table td {
             text-align: center;
-        }
-
-        tr:hover td {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .warning {
-            background: rgba(255, 220, 220, 0.2);
-            backdrop-filter: blur(12px);
-            border-left: 4px solid #ff8a7a;
-            padding: 18px 22px;
-            margin: 28px 0;
-            border-radius: 20px;
-            color: white;
-        }
-
-        .highlight {
-            background: rgba(255, 248, 220, 0.2);
-            backdrop-filter: blur(12px);
-            border-left: 4px solid #ffd966;
-            padding: 18px 22px;
-            margin: 28px 0;
-            border-radius: 20px;
-            color: white;
         }
 
         footer {
@@ -178,27 +223,25 @@
             margin-top: 56px;
             padding-top: 24px;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
-            color: rgba(255, 255, 255, 0.7);
         }
 
         footer a {
             color: white;
             text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        footer a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
         }
 
         @media (max-width: 600px) {
-            body {
-                padding: 16px 14px;
-            }
-            th, td {
-                padding: 10px 10px;
-                font-size: 12px;
-            }
-            .back-button {
-                width: 44px;
-                height: 44px;
-                font-size: 24px;
-            }
+            body { padding: 16px 14px; }
+            th, td { padding: 10px 10px; font-size: 13px; }
+            .info-block { flex-direction: column; text-align: center; }
+            .info-icon { margin-bottom: 8px; }
         }
 
         @keyframes fadeIn {
@@ -206,77 +249,94 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .container {
-            animation: fadeIn 0.5s ease;
-        }
+        .container { animation: fadeIn 0.5s ease; }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="nav-header">
-            <a href="index.html" class="back-button">←</a>
-            <span class="page-title">Вечерний уход 🌙</span>
-        </div>
-        
-        <div class="page-description">
-            🌙 Глубокое очищение + активные ингредиенты по расписанию.
+        <div class="page-header">
+            <span class="page-title">
+                <span class="animated-icon">🌙</span> Вечерний уход
+            </span>
         </div>
 
-        <h2>🧼 БАЗА ДЛЯ КАЖДОГО ВЕЧЕРА</h2>
-        <table>
-            <thead><tr><th>Шаг</th><th>Средство</th><th>Зачем</th></tr></thead>
-            <tbody>
-                <tr><td>1</td><td>Очищающее молочко Angiopharm</td><td>Снять SPF и загрязнения</td></tr>
-                <tr><td>2</td><td>Гель Bioderma</td><td>Второе глубокое умывание</td></tr>
-                <tr><td>3</td><td>Тонер Celimax с керамидами</td><td>Увлажнить и восстановить pH</td></tr>
-            </tbody>
-        </table>
-
-        <h2>🌙 ВЕЧЕРНИЙ АКТИВ ПО ДНЯМ</h2>
-        
-        <h3>📅 ПН / СР / ПТ — Азелаин (пигментация + поры)</h3>
-        <table><tbody><tr><td>4</td><td>Medicube Azelaic Acid 16%</td><td>На сухую кожу. Ждать 2 минуты</td></tr>
-        <tr><td>5</td><td>Dr. Althea 147 Barrier Cream</td><td>Восстановление барьера</td></tr></tbody></table>
-        
-        <h3>📅 ВТ / ЧТ / СБ — Кислоты (обновление + упругость)</h3>
-        <td><tbody><tr><td>4</td><td>Medi-Peel AHA BHA 28 Days Hyal Cream</td><td>Тонкий слой. Ждать 5–10 минут</td></tr>
-        <tr><td>5</td><td>Dr. Althea 147 Barrier Cream</td><td>Снижение раздражения от кислот</td></tr></tbody></table>
-        
-        <h3>📅 ВС — Отдых (без кислот)</h3>
-        <table><tbody><tr><td>4</td><td>Skin1004 Poremizing Fresh Ampoule</td><td>Центелла + пептиды</td></tr>
-        <tr><td>5</td><td>Dr. Althea 147 Barrier Cream</td><td>Максимальное восстановление</td></tr></tbody></table>
-
-        <h2>⏰ ШПАРГАЛКА НА НЕДЕЛЮ</h2>
-        <table class="day-table">
-            <thead><tr><th>Время</th><th>ПН</th><th>ВТ</th><th>СР</th><th>ЧТ</th><th>ПТ</th><th>СБ</th><th>ВС</th></tr></thead>
-            <tbody>
-                <tr><td><strong>УТРО</strong></td><td colspan="7">Ниац 10% + Poremizing + 345 крем + SPF</td></tr>
-                <tr><td><strong>ВЕЧЕР (база)</strong></td><td colspan="7">Молочко → гель Bioderma → тонер Celimax</td></tr>
-                <tr><td><strong>ВЕЧЕР (актив)</strong></td><td>Medicube</td><td>Medi-Peel</td><td>Medicube</td><td>Medi-Peel</td><td>Medicube</td><td>Medi-Peel</td><td>Poremizing Fresh</td></tr>
-                <tr><td><strong>ВЕЧЕР (финиш)</strong></td><td colspan="7">147 крем</td></tr>
-            </tbody>
-        </table>
-        
-        <div class="warning">
-            <strong>🚫 ЗАПРЕЩЕНО</strong><br>
-            • Смешивать Medicube и Medi-Peel в один вечер<br>
-            • Использовать энзимную пудру вечером<br>
-            • Пропускать SPF утром
+        <!-- БАЗА ДЛЯ КАЖДОГО ВЕЧЕРА -->
+        <div class="section-title">🧼 БАЗА ДЛЯ КАЖДОГО ВЕЧЕРА</div>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr><th>Шаг</th><th>Средство</th><th>Зачем</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td><a href="https://meyoushop.ru/catalog/litso/ochishchenie/penki_geli_dlya_umyvaniya/molochko_dlya_litsa_angiopharm_ochishchayushchiy_200ml/" class="product-link" target="_blank">Очищающее молочко Angiopharm</a></td><td>Снять SPF и загрязнения</td></tr>
+                    <tr><td>2</td><td><a href="https://goldapple.ru/89270300016-sensibio-mild-cleansing-foaming-gel?srsltid=AfmBOoow5wewL-On7IyyXAWPBhe6fgGa5hjlDp-Y_EkkbrISqsqQbJu-" class="product-link" target="_blank">Гель Bioderma</a></td><td>Второе глубокое умывание</td></tr>
+                    <tr><td>3</td><td><a href="https://hollyshop.ru/catalog/product/barernyy_kremovyy_toner_celimax_dual_barrier_creamy_toner_/" class="product-link" target="_blank" class="product-link" target="_blank">Тонер Celimax с керамидами</a></td><td>Увлажнить и восстановить pH</td></tr>
+                </tbody>
+            </table>
         </div>
 
-        <div class="highlight">
-            <strong>🧽 ДОПОЛНИТЕЛЬНО</strong><br>
-            Энзимная пудра — 1 раз в неделю <strong>утром</strong> (вместо геля Bioderma)
+        <!-- ВЕЧЕРНИЙ АКТИВ ПО ДНЯМ -->
+        <div class="section-title">🌙 ВЕЧЕРНИЙ АКТИВ ПО ДНЯМ</div>
+        
+        <div class="section-title" style="font-size: 1.2rem; border-left-color: #8bb56a;">📅 ПН / СР / ПТ — Азелаин (пигментация + поры)</div>
+        <div class="table-wrapper">
+            <table><tbody><tr><td>4</td><td><a href="https://hollyshop.ru/catalog/product/uspokaivayushchaya_syvorotka_s_16_azelainovoy_kisloty_medicube_azelaic_acid_16_bb_calming_serum/" class="product-link" target="_blank">Medicube Azelaic Acid 16%</a></td><td>На сухую кожу. Ждать 2 минуты</td></tr>
+            <tr><td>5</td><td><a href="https://hollyshop.ru/catalog/product/uspokaivayushchiy_krem_s_azulenom_dr_althea_azulene_147_ha_intensive_soothing_cream/" class="product-link" target="_blank">Dr. Althea 147 Barrier Cream</a></td><td>Восстановление барьера</td></tr></tbody></table>
+        </div>
+        
+        <div class="section-title" style="font-size: 1.2rem; border-left-color: #8bb56a;">📅 ВТ / ЧТ / СБ — Кислоты (обновление + упругость)</div>
+        <div class="table-wrapper">
+            <table><tbody><tr><td>4</td><td><a href="https://hollyshop.ru/catalog/product/obnovlyayushchiy_krem_s_kompleksom_kislot_medi_peel_aha_bha_28_days_hyal_cream/" class="product-link" target="_blank">Medi-Peel AHA BHA 28 Days Hyal Cream</a></td><td>Тонкий слой. Ждать 5–10 минут</td></tr>
+            <tr><td>5</td><td><a href="https://hollyshop.ru/catalog/product/uspokaivayushchiy_krem_s_azulenom_dr_althea_azulene_147_ha_intensive_soothing_cream/" class="product-link" target="_blank">Dr. Althea 147 Barrier Cream</a></td><td>Снижение раздражения от кислот</td></tr></tbody></table>
+        </div>
+        
+        <div class="section-title" style="font-size: 1.2rem; border-left-color: #8bb56a;">📅 ВС — Отдых (без кислот)</div>
+        <div class="table-wrapper">
+            <table><tbody><tr><td>4</td><td><a href="https://hollyshop.ru/catalog/product/seboreguliruyushchaya_ampula_dlya_suzheniya_por_skin1004_madagascar_centella_poremizing_fresh_ampoule_100ml/" class="product-link" target="_blank">Skin1004 Poremizing Fresh Ampoule</a></td><td>Центелла + пептиды</td></tr>
+            <tr><td>5</td><td><a href="https://hollyshop.ru/catalog/product/uspokaivayushchiy_krem_s_azulenom_dr_althea_azulene_147_ha_intensive_soothing_cream/" class="product-link" target="_blank">Dr. Althea 147 Barrier Cream</a></td><td>Максимальное восстановление</td></tr></tbody></table>
         </div>
 
-        <div class="highlight">
-            <strong>✅ ЧЕРЕЗ 3–4 НЕДЕЛИ</strong><br>
-            Поры — чище и уже · Пигментация — бледнеет · Сияние — ровный тон
+        <!-- ШПАРГАЛКА НА НЕДЕЛЮ -->
+        <div class="section-title">⏰ ШПАРГАЛКА НА НЕДЕЛЮ</div>
+        <div class="table-wrapper">
+            <table class="day-table">
+                <thead><tr><th>Время</th><th>ПН</th><th>ВТ</th><th>СР</th><th>ЧТ</th><th>ПТ</th><th>СБ</th><th>ВС</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>УТРО</strong></td><td colspan="7">Ниац 10% + Poremizing + 345 крем + SPF</td></tr>
+                    <tr><td><strong>ВЕЧЕР (база)</strong></td><td colspan="7">Молочко → гель Bioderma → тонер Celimax</td></tr>
+                    <tr><td><strong>ВЕЧЕР (актив)</strong></td><td>Medicube</td><td>Medi-Peel</td><td>Medicube</td><td>Medi-Peel</td><td>Medicube</td><td>Medi-Peel</td><td>Poremizing Fresh</td></tr>
+                    <tr><td><strong>ВЕЧЕР (финиш)</strong></td><td colspan="7">147 крем</td></tr>
+                </tbody>
+            </table>
         </div>
 
-        <footer>
-            <a href="index.html">← Вернуться на главную</a>
-        </footer>
+        <div class="info-block warning">
+            <div class="info-icon">🚫</div>
+            <div class="info-content">
+                <strong>ЗАПРЕЩЕНО</strong><br>
+                • Смешивать Medicube и Medi-Peel в один вечер<br>
+                • Использовать энзимную пудру вечером<br>
+                • Пропускать SPF утром
+            </div>
+        </div>
+
+        <div class="info-block tip">
+            <div class="info-icon">🧽</div>
+            <div class="info-content">
+                <strong>ДОПОЛНИТЕЛЬНО</strong><br>
+                Энзимная пудра — 1 раз в неделю <strong>утром</strong> (вместо геля Bioderma)
+            </div>
+        </div>
+
+        <div class="info-block tip">
+            <div class="info-icon">✅</div>
+            <div class="info-content">
+                <strong>ЧЕРЕЗ 3–4 НЕДЕЛИ</strong><br>
+                Поры — чище и уже · Пигментация — бледнеет · Сияние — ровный тон
+            </div>
+        </div>
+
+        <footer><a href="index.html">← Вернуться на главную</a></footer>
     </div>
 </body>
 </html>

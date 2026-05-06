@@ -2,38 +2,233 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Шпаргалки по активам | Твой уход за кожей</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Шпаргалки | Твой уход за кожей</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            min-height: 100vh;
+            padding: 24px 20px;
+            
+            background-image: url('https://images.unsplash.com/photo-1670201202802-5ec2423282ff?q=80&w=1823&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-color: rgba(0, 0, 0, 0.3);
+            background-blend-mode: overlay;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: inherit;
+            background-size: cover;
+            background-position: center;
+            filter: blur(8px);
+            z-index: -2;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .page-title {
+            font-size: clamp(1.8rem, 5vw, 2.2rem);
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .animated-icon {
+            display: inline-block;
+            animation: gentleWobble 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 5px rgba(255, 200, 80, 0.5));
+        }
+
+        @keyframes gentleWobble {
+            0%, 100% { transform: rotate(0deg) scale(1); filter: drop-shadow(0 0 5px rgba(255, 200, 80, 0.4)); }
+            50% { transform: rotate(8deg) scale(1.1); filter: drop-shadow(0 0 15px rgba(255, 200, 80, 0.8)); }
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(12px);
+            border-radius: 32px;
+            padding: 40px 32px;
+            margin: 32px 0;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .content-card h2 {
+            color: #FFE8B6;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .active-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .active-item {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 16px 20px;
+            border-radius: 20px;
+            border-left: 4px solid #ffd966;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .active-item:hover {
+            transform: translateX(5px);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .active-name {
+            font-weight: 700;
+            color: #FFE8B6;
+            font-size: 1.1rem;
+        }
+
+        .active-desc {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+            margin-top: 6px;
+        }
+
+        .badge {
+            background: rgba(255, 217, 102, 0.3);
+            color: #FFE8B6;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            display: inline-block;
+            margin-top: 8px;
+        }
+
+        .coming-badge {
+            text-align: center;
+            margin-top: 32px;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 60px;
+            color: #FFE8B6;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 56px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        footer a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .content-card { padding: 28px 20px; }
+            .active-item { padding: 12px 16px; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container { animation: fadeIn 0.5s ease; }
+    </style>
 </head>
 <body>
     <div class="container">
-        <div class="nav-header">
-            <a href="index.html" class="back-button">←</a>
-            <span class="page-title">Шпаргалки по активам 📘</span>
+        <div class="page-header">
+            <span class="page-title">
+                <span class="animated-icon">📘</span> Шпаргалки по активам
+            </span>
         </div>
 
-        <div class="empty-state">
-            <div class="empty-icon">📄✨</div>
-            <h3>База активов — готовится для вас</h3>
-            <p>Здесь будут подробные таблицы по действию ниацинамида, азелаиновой кислоты, AHA/BHA, пептидов и схемы введения в рутину.</p>
+        <div class="content-card">
+            <h2>📌 Кратко о ключевых активах</h2>
             
-            <div class="preview-block">
-                <strong>📌 Кратко о ключевых активах из твоей рутины:</strong><br><br>
-                🧪 <strong>Ниацинамид 10%</strong> — регулирует себум, сужает поры, осветляет постакне.<br>
-                🧪 <strong>Азелаин 16%</strong> — борется с пигментацией, розацеа, бактериями.<br>
-                🧪 <strong>AHA/BHA</strong> — отшелушивание, разглаживание текстуры.<br>
-                🧪 <strong>Центелла + пептиды</strong> — укрепление стенок сосудов, заживление.<br>
-                🧪 <strong>Керамиды</strong> — восстановление барьера, защита от потери влаги.
+            <div class="active-grid">
+                <div class="active-item">
+                    <div class="active-name">🧪 Ниацинамид 10%</div>
+                    <div class="active-desc">Регулирует себум, сужает поры, осветляет постакне. Работает утром и вечером.</div>
+                    <span class="badge">⭐ основной актив</span>
+                </div>
+                
+                <div class="active-item">
+                    <div class="active-name">⚕️ Азелаин 16%</div>
+                    <div class="active-desc">Борется с пигментацией, розацеа, бактериями. Наносить на сухую кожу, ждать 2 минуты.</div>
+                    <span class="badge">⭐ основной актив</span>
+                </div>
+                
+                <div class="active-item">
+                    <div class="active-name">💧 AHA/BHA кислота</div>
+                    <div class="active-desc">Отшелушивание, разглаживание текстуры, уменьшение комедонов. Ждать 5–10 минут.</div>
+                    <span class="badge">⚠️ осторожно</span>
+                </div>
+                
+                <div class="active-item">
+                    <div class="active-name">🌿 Центелла + пептиды</div>
+                    <div class="active-desc">Укрепление стенок сосудов, заживление, упругость. Подходит для восстановления.</div>
+                </div>
+                
+                <div class="active-item">
+                    <div class="active-name">🧴 Керамиды</div>
+                    <div class="active-desc">Восстановление барьера, защита от потери влаги. Использовать после активов.</div>
+                </div>
             </div>
-            <p class="italic-note">полная версия появится совсем скоро ✨</p>
+            
+            <div class="coming-badge">
+                <strong>📖 Полная версия</strong><br>
+                Подробные таблицы, схемы введения и комбинации активов — скоро здесь!
+            </div>
         </div>
-
-        <!-- TODO: добавить детальные таблицы по каждому активу -->
-        <!--
-        <h2>🧪 Ниацинамид</h2>
-        <table>...</table>
-        -->
 
         <footer><a href="index.html">← Вернуться на главную</a></footer>
     </div>
